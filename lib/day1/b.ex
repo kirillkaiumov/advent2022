@@ -1,16 +1,19 @@
 defmodule Day1.B do
+  import Enum, except: [split: 2]
+  import String, except: [slice: 2]
+
   def call do
-    input = File.read!("lib/day1/input") |> String.trim()
+    input = File.read!("lib/day1/input") |> trim()
 
     res =
       input
-      |> String.split("\n\n")
-      |> Enum.map(fn group ->
-        group |> String.split("\n") |> Enum.map(&String.to_integer/1) |> Enum.sum()
+      |> split("\n\n")
+      |> map(fn group ->
+        group |> split("\n") |> map(&to_integer/1) |> sum()
       end)
-      |> Enum.sort()
-      |> Enum.slice(-3..-1)
-      |> Enum.sum()
+      |> sort()
+      |> slice(-3..-1)
+      |> sum()
 
     IO.puts(res)
   end
