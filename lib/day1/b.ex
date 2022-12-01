@@ -8,9 +8,7 @@ defmodule Day1.B do
     res =
       input
       |> split("\n\n")
-      |> map(fn group ->
-        group |> split("\n") |> map(&to_integer/1) |> sum()
-      end)
+      |> map(fn group -> group |> split("\n") |> map(&to_integer/1) |> sum() end)
       |> sort()
       |> slice(-3..-1)
       |> sum()
