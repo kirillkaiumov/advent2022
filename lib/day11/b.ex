@@ -26,7 +26,7 @@ defmodule Day11.B do
     [[_, _, operation_sign, operand]] = Regex.scan(~r/new = (.+) ([*+]) (.+)/, input)
 
     operation =
-
+      cond do
         operand == "old" -> fn old -> floor(old * old / 2) end
         operation_sign == "+" -> fn old -> floor((old + to_integer(operand)) / 2) end
         operation_sign == "*" -> fn old -> floor(old * to_integer(operand) / 2) end
